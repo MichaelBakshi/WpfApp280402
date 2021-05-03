@@ -1,0 +1,17 @@
+﻿<Window x:Class="WpfApp280402.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp280402"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="600">
+    <Grid>
+        <TextBlock x:Name="UrlTextBlock" HorizontalAlignment="Left" Margin="80,165,0,0" TextWrapping="Wrap" Text="URL:" VerticalAlignment="Top"/>
+        <TextBox x:Name="UrlTextBox" HorizontalAlignment="Left" Height="23" Margin="187,165,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="300"/>
+        <TextBlock HorizontalAlignment="Left" Margin="80,247,0,0" TextWrapping="Wrap" Text="Size:" VerticalAlignment="Top"/>
+        <TextBlock x:Name="SizeTextBlock" HorizontalAlignment="Left" Margin="187,247,0,0" TextWrapping="Wrap" Text="{Binding Path=SizeMessage }" VerticalAlignment="Top" Width="300"/>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="226,338,0,0" VerticalAlignment="Top" Width="143" Height="37" Click="Button_Click"/>
+
+    </Grid>
+</Window>
