@@ -41,11 +41,20 @@ namespace WpfApp280402
             using (StreamReader reader = new StreamReader(response.GetResponseStream()))
             {
                 string text = reader.ReadToEnd();
-
                 var sizeTextBlock = (TextBlock)FindName("SizeTextBlock");
                 sizeTextBlock.Inlines.Add(text.Length.ToString());
                 // text.Length == is the length of the result
             }
         }
+
+        private void UrlTextBox_MouseEnter(object sender, MouseEventArgs e)
+        {
+            UrlTextBox.Clear();
+        }
+
+        //private void UrlTextBox_MouseDown(object sender, MouseButtonEventArgs e)
+        //{
+        //    UrlTextBox.Clear();
+        //}
     }
 }
