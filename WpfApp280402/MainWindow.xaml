@@ -6,12 +6,21 @@
         xmlns:local="clr-namespace:WpfApp280402"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="600">
-    <Grid>
+
+        <Window.Resources>
+        <local:URLToSize x:Key="URLToSize"></local:URLToSize>
+        <local:HTTPCheck x:Key="HTTPCheck"></local:HTTPCheck>
+        </Window.Resources>
+
+         <Grid>
         <TextBlock x:Name="UrlTextBlock" HorizontalAlignment="Left" Margin="80,165,0,0" TextWrapping="Wrap" Text="URL:" VerticalAlignment="Top"/>
-        <TextBox x:Name="UrlTextBox" HorizontalAlignment="Left" Height="23" Margin="187,165,0,0" TextWrapping="Wrap" Text="Please enter here URL address..." VerticalAlignment="Top" Width="300" MouseEnter="UrlTextBox_MouseEnter"  />
+        <TextBox x:Name="UrlTextBox" HorizontalAlignment="Left" Height="23" Margin="187,165,0,0" TextWrapping="Wrap" Text="{Binding Url}" VerticalAlignment="Top" Width="300" MouseEnter="UrlTextBox_MouseEnter"  />
         <TextBlock HorizontalAlignment="Left" Margin="80,247,0,0" TextWrapping="Wrap" Text="Size:" VerticalAlignment="Top"/>
-        <TextBlock x:Name="SizeTextBlock" HorizontalAlignment="Left" Margin="187,247,0,0" TextWrapping="Wrap" Text="{Binding Path=SizeMessage }" VerticalAlignment="Top" Width="300"/>
-        <Button x:Name="ButtonGetSize" Content="Button" HorizontalAlignment="Left" Margin="226,338,0,0" VerticalAlignment="Top" Width="143" Height="37" Click="Button_Click"/>
+        <TextBlock x:Name="SizeTextBlock" HorizontalAlignment="Left" Margin="187,247,0,0" TextWrapping="Wrap" Text="{Binding Size }" VerticalAlignment="Top" Width="300"/>
+        <Button x:Name="ButtonGetSize" Content="Get Size" HorizontalAlignment="Left" 
+                IsEnabled="{Binding Path=Text, 
+                ElementName=UrlTextBox, Converter={StaticResource HTTPCheck}}" Command="{Binding DispatcherButton}" 
+                Margin="226,338,0,0" VerticalAlignment="Top" Width="143" Height="37"/>
 
     </Grid>
 </Window>
