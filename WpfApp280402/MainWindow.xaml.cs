@@ -52,9 +52,5 @@ namespace WpfApp280402
             UrlTextBox.Clear();
         }
 
-        //private void UrlTextBox_MouseDown(object sender, MouseButtonEventArgs e)
-        //{
-        //    UrlTextBox.Clear();
-        //}
     }
 }
