@@ -25,7 +25,6 @@ namespace WpfApp280402
        
         public MainWindow()
         {
-
             InitializeComponent();
 
             //URLToSize u=new URLToSize();
@@ -38,7 +37,5 @@ namespace WpfApp280402
         {
             UrlTextBox.Clear();
         }
-
-        
     }
 }

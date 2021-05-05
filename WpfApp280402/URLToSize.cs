@@ -63,31 +63,50 @@ namespace WpfApp280402
         {
             DispatcherButton = new DelegateCommand(GetSizeByDispatcher);
             IsEnabled = true;
-            // Url = "http://";
+
             //AsyncButton = new DelegateCommand(GetSizeByDispatcher);
 
         }
-        //string url = "https://www.ynet.co.il/home/0,7340,L-8,00.html";
 
+        //Dispatcher Invoke
         public void GetSizeByDispatcher()
         {
-           
-                IsEnabled = false;
-                Task.Run(() =>
+
+            IsEnabled = false;
+            Task.Run(() =>
+            {
+                WebRequest webRequest = WebRequest.Create(Url);
+                WebResponse response = webRequest.GetResponse();
+                using (StreamReader reader = new StreamReader(response.GetResponseStream()))
                 {
-                    WebRequest webRequest = WebRequest.Create(Url);
-                    WebResponse response = webRequest.GetResponse();
-                    using (StreamReader reader = new StreamReader(response.GetResponseStream()))
-                    {
-                        string text = reader.ReadToEnd();
-                        Dispatcher.CurrentDispatcher.Invoke(() => { Size = text.Length.ToString(); });
-                    // Size = text.Length.ToString(); 
-                    // text.Length == is the length of the result
-                }
-                });
-                IsEnabled = true;
+                    string text = reader.ReadToEnd();
+                    Dispatcher.CurrentDispatcher.Invoke(() => { Size = text.Length.ToString(); });
+                        // Size = text.Length.ToString(); 
+                        // text.Length == is the length of the result
+                    }
+            });
+            IsEnabled = true;
 
         }
+
+        //Async Await
+        //public async void GetSizeByDispatcher()
+        //{
+
+        //    IsEnabled = false;
+
+        //        WebRequest webRequest = WebRequest.Create(Url);
+        //        WebResponse response = await webRequest.GetResponseAsync();
+        //        using (StreamReader reader = new StreamReader(response.GetResponseStream()))
+        //        {
+        //            string text =await reader.ReadToEndAsync();
+        //             Size = text.Length.ToString(); 
+        //        }
+
+        //    IsEnabled = true;
+
+        //}
+
         public event PropertyChangedEventHandler PropertyChanged;
 
 
